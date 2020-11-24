@@ -4,8 +4,8 @@
  * 
  * 
  *
- * @author (Mouayad Haji Omar, Zubeir Mohamed)
- * @version
+ * @author Mouayad Haji Omar, Zubeir Mohamed
+ * @version 1.0
  */
 public class Artikel {
 
