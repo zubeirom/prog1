@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -30,7 +31,7 @@ public class ArtikelDialog {
         int artikelNr = input.nextInt();
         input.nextLine();
         System.out.println("Artikelart: ");
-        String art = input.nextLine();
+        String art = input.nextLine().trim();
         System.out.println("Bestand (Drücke Enter, falls nicht vorhanden): ");
         String eingabe = input.nextLine();
         int bestand = eingabe.isEmpty() ? 0 : Integer.parseInt(eingabe);
@@ -124,9 +125,12 @@ public class ArtikelDialog {
                 System.out.println(e);
             } catch (NullPointerException e) {
                 System.out.println("Artikel exestiert nicht! Bitte erstellen sie zuerst ein Artikel.");
+            } catch (InputMismatchException e) {
+                System.out.println(e + " Falsche Eingabe!");
+                input.nextLine();
             } catch (Exception e) {
-                System.out.println(e);
-                e.printStackTrace(System.out);
+                System.out.println(e + " Programm beendet");
+                funktion = ENDE;
             }
         }
     }

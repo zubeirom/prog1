@@ -14,14 +14,35 @@ public class Artikel {
     private int bestand;
 
     public Artikel(int artikelNr, String art, int bestand) {
-        this.artikelNr = artikelNr;
-        this.art = art;
-        this.bestand = bestand;
+        if (artikelNr > 999 && artikelNr < 10000) {
+            this.artikelNr = artikelNr;
+        } else {
+            throw new IllegalArgumentException("Artikelnummer muss 4-stellig sein");
+        }
+        System.out.println(art);
+        if (!art.isEmpty()) {
+            this.art = art;
+        } else {
+            throw new IllegalArgumentException("Artikelart muss angegeben werden");
+        }
+        if (bestand > 0) {
+            this.bestand = bestand;
+        } else {
+            throw new IllegalArgumentException("Bestand darf nicht kleiner als null sein");
+        }
     }
 
     public Artikel(int artikelNr, String art) {
-        this.artikelNr = artikelNr;
-        this.art = art;
+        if (artikelNr > 999 && artikelNr < 10000) {
+            this.artikelNr = artikelNr;
+        } else {
+            throw new IllegalArgumentException("Artikelnummer muss 4-stellig sein");
+        }
+        if (art != null) {
+            this.art = art;
+        } else {
+            throw new IllegalArgumentException("Artikelart muss angegeben werden");
+        }
     }
 
     /**
@@ -66,7 +87,11 @@ public class Artikel {
      * @param bestand Bestand des Artikels
      */
     public void setBestand(int bestand) {
-        this.bestand = bestand;
+        if (bestand > 0) {
+            this.bestand = bestand;
+        } else {
+            System.out.println("Bestand muss größer als 0 sein");
+        }
     }
 
     /**
@@ -75,7 +100,11 @@ public class Artikel {
      * @param menge Die menge die dazu addiert wird
      */
     public void bucheZugang(int menge) {
-        this.bestand = bestand + menge;
+        if (bestand > 0) {
+            this.bestand = bestand + menge;
+        } else {
+            System.out.println("Bestand muss größer als 0 sein");
+        }
     }
 
     /**
@@ -84,7 +113,11 @@ public class Artikel {
      * @param menge Die menge die den Bestand vermindert
      */
     public void bucheAbgang(int menge) {
-        this.bestand = bestand - menge;
+        if (bestand > 0) {
+            this.bestand = bestand - menge;
+        } else {
+            System.out.println("Bestand muss größer als 0 sein");
+        }
     }
 
     /**
