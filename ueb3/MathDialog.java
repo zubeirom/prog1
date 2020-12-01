@@ -2,7 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Programm zum erstellen und bearbeiten von Artikeln
+ * Klasse zum Testen von MathFunctions
  * 
  * @author Mouayad Haji Omar, Zubeir Mohamed
  * @version 1.0

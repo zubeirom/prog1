@@ -1,5 +1,5 @@
 /**
- * 
+ * Klasse zum berechnen der Teilsumme und prüfziffer der isbn
  *
  * @author Mouayad Haji Omar, Zubeir Mohamed
  * @version 1.0
