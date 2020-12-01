@@ -1,5 +1,6 @@
 /**
- * 
+ * Math funktionen klasse die einmal teilersumme berechnet und prüfziffer einer
+ * isbn berechnet
  *
  * @author Mouayad Haji Omar, Zubeir Mohamed
  * @version 1.0
