@@ -54,7 +54,7 @@ public final class MathFunctions {
             }
 
             /*
-             * Schleife die die gespaltene isbn eins nach dem anderen in die Rechnung
+             * Schleife das die isbn eine ziffer nach dem anderen in die Rechnung
              * miteinbezieht
              */
             for (int i = 0; i < temp.length(); i++) {
