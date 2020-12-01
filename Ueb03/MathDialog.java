@@ -9,4 +9,7 @@ import java.util.InputMismatchException;
  */
 public class MathDialog {
 
+    public static void main(String[] args) {
+
+    }
 }
