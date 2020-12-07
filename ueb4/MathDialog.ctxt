@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=MathDialog
+comment0.text=\r\n\ Programm\ zum\ erstellen\ und\ bearbeiten\ von\ Artikeln\r\n\ \r\n\ @author\ Mouayad\ Haji\ Omar,\ Zubeir\ Mohamed\r\n\ @version\ 1.0\r\n
+comment1.params=
+comment1.target=MathDialog()
+comment2.params=
+comment2.target=int\ einleseFunktion()
+comment2.text=\r\n\ Einzelne\ befehle\ werden\ hier\ angezeigt\r\n\ \r\n\ @return\ Ganzzahl\ eingabe\ des\ benutzer\r\n
+comment3.params=
+comment3.target=long\ longEingabe()
+comment3.text=\r\n\ Hier\ erhalten\ wird\ den\ Bestand\r\n\ \r\n\ @return\ Ganzzahl\ eingabe\ vom\ benutzer\r\n
+comment4.params=funktion
+comment4.target=void\ ausfuehrenFunktion(int)
+comment4.text=\r\n\ Hier\ wird\ abh\u00E4ngig\ vom\ benutzer\ die\ richtige\ methode\ ausgef\u00FChrt\r\n\ \r\n\ @param\ funktion\ Befehl\ des\ benutzer\r\n
+comment5.params=
+comment5.target=void\ start()
+comment5.text=\r\n\ Hauptschleife\ des\ Testprogramms\r\n
+comment6.params=args
+comment6.target=void\ main(java.lang.String[])
+comment6.text=\r\n\ Main\ methode\r\n\ \r\n\ @param\ args\r\n
+numComments=7

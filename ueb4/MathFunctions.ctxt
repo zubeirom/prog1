@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=MathFunctions
+comment0.text=\r\n\ \r\n\ \r\n\r\n\ @author\ Mouayad\ Haji\ Omar,\ Zubeir\ Mohamed\r\n\ @version\ 1.0\r\n
+comment1.params=zahl
+comment1.target=long\ berechneTeilersumme(long)
+comment1.text=\r\n\ Durch\ die\ Methode\ wird\ die\ Teilsumme\ einer\ Zahl\ berechnet\r\n\ \r\n\ @param\ zahl\ zahl\ zum\ berechnen\ der\ Teilsumme\r\n\ \r\n\ @return\ Teilersumme\r\n
+comment2.params=isbn
+comment2.target=java.lang.String\ berechneChecksummeIsbn(long)
+comment2.text=\r\n\ Diese\ Methode\ gibt\ uns\ die\ Pr\u00FCfziffer\ f\u00FCr\ eine\ ISBN\r\n\ \r\n\ @param\ isbn\ Die\ ISBN's\ zum\ berechnen\ der\ pr\u00FCfziffer\r\n\ \r\n\ @return\ pr\u00FCfZiffer\ des\ ISBN's\r\n
+comment3.params=p\ q
+comment3.target=java.lang.String\ berechneNullstellen(double,\ double)
+comment3.text=\r\n\ Eine\ Methode,\ die\ die\ Nullstellen\ einer\ quadratische\ Gleischung\ berechnet\r\n\ \r\n
+comment4.params=n
+comment4.target=boolean\ istSummeVonPotenzen(int)
+comment4.text=\r\n\ eine\ Methode\ die\ ,\ die\ Summe\ von\ Potezen\ berechnet\r\n
+numComments=5
