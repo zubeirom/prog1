@@ -31,7 +31,7 @@ public class MathDialog {
 
     private int einleseFunktion() {
         System.out.print(TEILSUMME + ": Teilsumme berechnen; " + CHECKSUMMEISBN + ": ISBN Checksumme berechnen; "
-                + NULLSTELLENBERECHNEN + "Nullstellen einer quadratische Gleichung berechnen : " + SUMMEVONPOTENZEN
+                + NULLSTELLENBERECHNEN + ": Nullstellen einer quadratische Gleichung berechnen : " + SUMMEVONPOTENZEN
                 + " Summe Von Potenzen : " + ENDE + ": beenden -> ");
         return input.nextInt();
     }

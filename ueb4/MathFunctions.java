@@ -97,23 +97,22 @@ public final class MathFunctions {
         double x2 = ((-p) - SQRTdelta) / 2;
 
         /*
-         * unsere Ausgabe
+         * Wir wollen zuerst annehmen, dass die werte komplexe nullstellen sind bis sie
+         * durch die if-bedingungen geändert werden können.
          */
 
-        String output;
+        String output = "Komplexe Nullstellen";
 
         /*
          * Fall-unterscheidung ob es zwei oder eine oder gar keine Nullstelle gibt
          *
          */
         if (SQRTdelta > 0) {
-            output = "Zwei Nullstellen:" + x1 + " | " + x2;
+            output = "Zwei Nullstellen: " + x1 + " | " + x2;
         }
 
         if (SQRTdelta == 0) {
-            output = "Doppelte Nullstelle" + x1;
-        } else {
-            output = "Komplexe Nullstellen";
+            output = "Doppelte Nullstelle " + x1;
         }
 
         return output;
