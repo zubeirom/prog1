@@ -3,22 +3,26 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Programm zum erstellen und bearbeiten von Artikeln
+ * Programm zum testen von Lager
  * 
  * @author Mouayad Haji Omar, Zubeir Mohamed
  * @version 1.0
  */
-public class ArtikelDialog {
+public class LagerDialog {
 
-    private Artikel artikel1;
+    Lager lager;
     private Scanner input = new Scanner(System.in);
 
     // Klassenkonstanten
-    private static final int ANLEGEN = 1;
+    private static final int ARTIKELANLEGEN = 1;
     private static final int ZUGANGBUCHEN = 2;
     private static final int ABGANGBUCHEN = 3;
-    private static final int ARTIKELARTNEUSETZEN = 4;
-    private static final int ARTIKELINFOS = 5;
+    private static final int LAGERGROESSE = 5;
+    private static final int ENTFERNEARTIKEL = 8;
+    private static final int PREISEBEARBEITEN = 9;
+    private static final int LAGERINHALT = 10;
+    private static final int LAGERANLEGEN = 11;
+    private static final int ARTIKELANZAHL = 12;
     private static final int ENDE = 0;
 
     /**
@@ -45,6 +49,14 @@ public class ArtikelDialog {
         return new Artikel(artikelNr, art, bestand, preis);
     }
 
+    private Lager lagerAnlegen() {
+        input.nextLine();
+        System.out.println("Lagergrösse (Drücke Enter um Standardgröße 10 zu verwenden): ");
+        String eingabe = input.nextLine();
+        int größe = eingabe.isEmpty() ? 10 : Integer.parseInt(eingabe);
+        return new Lager(größe);
+    }
+
     /**
      * Einzelne befehle werden hier angezeigt
      * 
@@ -52,11 +64,12 @@ public class ArtikelDialog {
      */
 
     private int einleseFunktion() {
-        System.out.println("--------- Artikel Konfiguration ---------");
-        System.out.print(
-                ANLEGEN + ": Artikel anlegen; " + ZUGANGBUCHEN + ": Bestand des artikels erhöhen; " + ABGANGBUCHEN
-                        + ": Bestand des Artikels verringern; " + ARTIKELARTNEUSETZEN + ": Artikelart neu setzen; "
-                        + ARTIKELINFOS + ": Artikelinformationen erhalten; " + ENDE + ": beenden -> ");
+        System.out.println("--------- Lager System ---------");
+        System.out.print(ARTIKELANLEGEN + ": Artikel anlegen; \n" + ZUGANGBUCHEN + ": Bestand des artikels erhöhen; \n"
+                + ABGANGBUCHEN + ": Bestand des Artikels verringern; \n" + LAGERGROESSE + ": Lagergrösse anzeigen; \n"
+                + ENTFERNEARTIKEL + ": Entferne artikel; \n" + PREISEBEARBEITEN + ": Preise nach prozen bearbeiten; \n"
+                + LAGERINHALT + ": Inhalt des Lagers aufzeigen; \n" + LAGERANLEGEN + ": Lager anlegen; \n"
+                + ARTIKELANZAHL + ": Artikel anzahl; \n" + ENDE + ": beenden -> ");
         return input.nextInt();
     }
 
@@ -90,21 +103,41 @@ public class ArtikelDialog {
      */
     private void ausfuehrenFunktion(int funktion) {
         switch (funktion) {
-            case ANLEGEN:
-                artikel1 = artikelAnlegen();
-                artikel1.toString();
+            case LAGERANLEGEN:
+                lager = lagerAnlegen();
+                break;
+            case ARTIKELANLEGEN:
+                Artikel artikel = artikelAnlegen();
+                lager.legeAnArtikel(artikel);
                 break;
             case ZUGANGBUCHEN:
-                artikel1.bucheZugang(bestandEingabe());
+                System.out.println("Artikelnummer: ");
+                int artikelNr = input.nextInt();
+                lager.bucheZugang(artikelNr, bestandEingabe());
                 break;
             case ABGANGBUCHEN:
-                artikel1.bucheAbgang(bestandEingabe());
+                System.out.println("Artikelnummer: ");
+                int artikelNr1 = input.nextInt();
+                lager.bucheZugang(artikelNr1, bestandEingabe());
                 break;
-            case ARTIKELARTNEUSETZEN:
-                artikel1.setArt(artEingabe());
+            case LAGERGROESSE:
+                System.out.println("Die Lagergrösse ist " + lager.getLagerGroesse());
                 break;
-            case ARTIKELINFOS:
-                System.out.println(artikel1.toString());
+            case ENTFERNEARTIKEL:
+                System.out.println("Artikelnummer: ");
+                int artikelNr2 = input.nextInt();
+                lager.entferneArtikel(artikelNr2);
+                break;
+            case PREISEBEARBEITEN:
+                System.out.println("Prozent: ");
+                Double prozent = input.nextDouble();
+                lager.aenderePreisAllerArtikel(prozent);
+                break;
+            case ARTIKELANZAHL:
+                System.out.println("Die Artikelanzahl lautet " + lager.getArtikelAnzahl());
+                break;
+            case LAGERINHALT:
+                System.out.println(lager.toString());
                 break;
             case ENDE:
                 System.out.println("Programmende");
@@ -119,7 +152,7 @@ public class ArtikelDialog {
      * Hauptschleife des Testprogramms
      */
     public void start() {
-        artikel1 = null;
+        lager = null;
         int funktion = -1;
 
         while (funktion != ENDE) {
@@ -129,7 +162,7 @@ public class ArtikelDialog {
             } catch (IllegalArgumentException e) {
                 System.out.println(e);
             } catch (NullPointerException e) {
-                System.out.println("Artikel exestiert nicht! Bitte erstellen sie zuerst ein Artikel.");
+                System.out.println("Lager oder Artikel exestiert nicht! Bitte erstellen sie diese zuerst.");
             } catch (InputMismatchException e) {
                 System.out.println(e + " Falsche Eingabe!");
                 input.nextLine();
@@ -138,5 +171,15 @@ public class ArtikelDialog {
                 funktion = ENDE;
             }
         }
+    }
+
+    /**
+     * Main methode
+     * 
+     * @param args
+     */
+
+    public static void main(String[] args) {
+        new LagerDialog().start();
     }
 }
