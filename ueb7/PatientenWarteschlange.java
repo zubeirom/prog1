@@ -5,7 +5,11 @@ public class PatientenWarteschlange {
     Patient[] patientenWarteschlange;
 
     public PatientenWarteschlange(int größe) {
-        this.patientenWarteschlange = new Patient[größe];
+        if (größe > 0) {
+            this.patientenWarteschlange = new Patient[größe];
+        } else {
+            throw new IllegalArgumentException("Warteschlange muss größer als 0 sein");
+        }
     }
 
     public void neuerPatient(int pnr, String name) {
