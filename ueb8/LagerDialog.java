@@ -199,37 +199,76 @@ public class LagerDialog {
                 lager = lagerAnlegen();
                 break;
             case ARTIKELANLEGEN:
+                if (lager == null) {
+                    System.out.println("Kein Lager vorhanden! Bitte erstellen sie ein Lager, geben sie 11 ein");
+                    break;
+                }
                 Artikel artikel = artikelAnlegen();
                 lager.legeAnArtikel(artikel);
                 break;
             case ZUGANGBUCHEN:
+                if (lager == null) {
+                    System.out.println("Kein Lager vorhanden! Bitte erstellen sie ein Lager, geben sie 11 ein");
+                    break;
+                }
                 System.out.println("Artikelnummer: ");
                 int artikelNr = input.nextInt();
                 lager.bucheZugang(artikelNr, bestandEingabe());
                 break;
             case ABGANGBUCHEN:
+                if (lager == null) {
+                    System.out.println("Kein Lager vorhanden! Bitte erstellen sie ein Lager, geben sie 11 ein");
+                    break;
+                }
                 System.out.println("Artikelnummer: ");
                 int artikelNr1 = input.nextInt();
                 lager.bucheZugang(artikelNr1, bestandEingabe());
                 break;
             case LAGERGROESSE:
+                if (lager == null) {
+                    System.out.println("Kein Lager vorhanden! Bitte erstellen sie ein Lager, geben sie 11 ein");
+                    break;
+                }
                 System.out.println("Die Lagergrösse ist " + lager.getLagerGroesse());
                 break;
             case ENTFERNEARTIKEL:
+                if (lager == null) {
+                    System.out.println("Kein Lager vorhanden! Bitte erstellen sie ein Lager, geben sie 11 ein");
+                    break;
+                }
                 System.out.println("Artikelnummer: ");
                 int artikelNr2 = input.nextInt();
                 lager.entferneArtikel(artikelNr2);
                 break;
             case PREISEBEARBEITEN:
+                if (lager == null) {
+                    System.out.println("Kein Lager vorhanden! Bitte erstellen sie ein Lager, geben sie 11 ein");
+                    break;
+                }
                 System.out.println("Prozent: ");
                 Double prozent = input.nextDouble();
                 lager.aenderePreisAllerArtikel(prozent);
                 break;
             case ARTIKELANZAHL:
+                if (lager == null) {
+                    System.out.println("Kein Lager vorhanden! Bitte erstellen sie ein Lager, geben sie 11 ein");
+                    break;
+                }
                 System.out.println("Die Artikelanzahl lautet " + lager.getArtikelAnzahl());
                 break;
             case BESTANDAUSGEBEN:
+                if (lager == null) {
+                    System.out.println("Kein Lager vorhanden! Bitte erstellen sie ein Lager, geben sie 11 ein");
+                    break;
+                }
                 lager.ausgebenBestandsListe();
+                break;
+            case ALLEARTIKEL:
+                if (lager == null) {
+                    System.out.println("Kein Lager vorhanden! Bitte erstellen sie ein Lager, geben sie 11 ein");
+                    break;
+                }
+                System.out.println(lager.toString());
                 break;
             case ENDE:
                 System.out.println("Programmende");
