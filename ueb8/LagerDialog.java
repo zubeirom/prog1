@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -20,7 +19,7 @@ public class LagerDialog {
     private static final int LAGERGROESSE = 5;
     private static final int ENTFERNEARTIKEL = 8;
     private static final int PREISEBEARBEITEN = 9;
-    private static final int LAGERINHALT = 10;
+    private static final int BESTANDAUSGEBEN = 10;
     private static final int LAGERANLEGEN = 11;
     private static final int ARTIKELANZAHL = 12;
     private static final int ENDE = 0;
@@ -32,23 +31,123 @@ public class LagerDialog {
      */
 
     private Artikel artikelAnlegen() {
+        System.out.println();
         System.out.print("Artikelnummer: ");
         int artikelNr = input.nextInt();
         input.nextLine();
+
         System.out.println("Artikelart: ");
         String art = input.nextLine().trim();
+
         System.out.print("Preis: ");
         double preis = input.nextDouble();
         input.nextLine();
+
         System.out.println("Bestand (Drücke Enter, falls nicht vorhanden): ");
         String eingabe = input.nextLine();
         int bestand = eingabe.isEmpty() ? 0 : Integer.parseInt(eingabe);
-        if (bestand < 1) {
-            return new Artikel(artikelNr, art, preis);
+
+        Artikel neuerArtikel;
+
+        if (bestand == 0) {
+            neuerArtikel = new Artikel(artikelNr, art, preis);
+        } else {
+            neuerArtikel = new Artikel(artikelNr, art, bestand, preis);
         }
-        return new Artikel(artikelNr, art, bestand, preis);
+
+        System.out.println();
+
+        System.out.println(
+                "Welchen Artikel wollen sie erstellen? \n 1: Artikel \n 2: CD \n 3: Video \n 4: Buch \n ---->  ");
+        int artikelWahl = input.nextInt();
+        input.nextLine();
+
+        switch (artikelWahl) {
+            case 1:
+                return neuerArtikel;
+            case 2:
+                return cdAnlegen(neuerArtikel);
+            case 3:
+                return videoAnlegen(neuerArtikel);
+            case 4:
+                return buchAnlegen(neuerArtikel);
+            default:
+                throw new IllegalArgumentException("Bitte wählen sie eine Nummer");
+        }
+
     }
 
+    /**
+     * CD Anlegen
+     * 
+     * @param basis Artikel mit basis werten
+     * @return Neue CD
+     */
+    private CD cdAnlegen(Artikel basis) {
+        System.out.println("-----CD----");
+        System.out.print("Titel: ");
+        String titel = input.nextLine().trim();
+
+        System.out.print("Interpret: ");
+        String interpret = input.nextLine().trim();
+
+        System.out.print("Titelanzahl: ");
+        int anzahlTitel = input.nextInt();
+
+        System.out.println();
+
+        return new CD(basis.getArtikelNr(), basis.getBestand(), basis.getPreis(), interpret, titel, anzahlTitel);
+    }
+
+    /**
+     * Video Anlegen
+     * 
+     * @param basis Artikel mit basis werten
+     * @return Neue Video
+     */
+    private Video videoAnlegen(Artikel basis) {
+        System.out.println("-----Video----");
+        System.out.print("Titel: ");
+        String titel = input.nextLine().trim();
+
+        System.out.print("Spieldauer: ");
+        int spieldauer = input.nextInt();
+
+        System.out.print("Jahr: ");
+        int jahr = input.nextInt();
+
+        System.out.println();
+
+        return new Video(basis.getArtikelNr(), basis.getBestand(), basis.getPreis(), titel, spieldauer, jahr);
+    }
+
+    /**
+     * Buch Anlegen
+     * 
+     * @param basis Artikel mit basis werten
+     * @return Neue Buch
+     */
+    private Buch buchAnlegen(Artikel basis) {
+        System.out.println("-----Buch----");
+        System.out.print("Titel: ");
+        String titel = input.nextLine().trim();
+
+        System.out.print("Autor: ");
+        String autor = input.nextLine().trim();
+
+        System.out.print("Verlag: ");
+        String verlag = input.nextLine().trim();
+
+        System.out.println();
+
+        return new Buch(basis.getArtikelNr(), basis.getBestand(), basis.getPreis(), titel, autor, verlag);
+    }
+
+    /**
+     * Neues lager erstellen
+     * 
+     * @return neues lager
+     */
     private Lager lagerAnlegen() {
         input.nextLine();
         System.out.println("Lagergrösse (Drücke Enter um Standardgröße 10 zu verwenden): ");
@@ -65,10 +164,13 @@ public class LagerDialog {
 
     private int einleseFunktion() {
         System.out.println("--------- Lager System ---------");
+        if (lager == null) {
+            System.out.println("Kein Lager vorhanden! Bitte erstellen sie ein Lager, geben sie 11 ein");
+        }
         System.out.print(ARTIKELANLEGEN + ": Artikel anlegen; \n" + ZUGANGBUCHEN + ": Bestand des artikels erhöhen; \n"
                 + ABGANGBUCHEN + ": Bestand des Artikels verringern; \n" + LAGERGROESSE + ": Lagergrösse anzeigen; \n"
                 + ENTFERNEARTIKEL + ": Entferne artikel; \n" + PREISEBEARBEITEN + ": Preise nach prozen bearbeiten; \n"
-                + LAGERINHALT + ": Inhalt des Lagers aufzeigen; \n" + LAGERANLEGEN + ": Lager anlegen; \n"
+                + BESTANDAUSGEBEN + ": Bestand des Lagers ausgeben; \n" + LAGERANLEGEN + ": Lager anlegen; \n"
                 + ARTIKELANZAHL + ": Artikel anzahl; \n" + ENDE + ": beenden -> ");
         return input.nextInt();
     }
@@ -82,18 +184,6 @@ public class LagerDialog {
     private int bestandEingabe() {
         System.out.println("Bestand: ");
         return input.nextInt();
-    }
-
-    /**
-     * 
-     * Hier wird die artikelart als eingabe vom benutzer übergeben
-     * 
-     * @return Zeile der benutzereingabe
-     */
-    private String artEingabe() {
-        input.nextLine();
-        System.out.println("Artikelart: ");
-        return input.nextLine();
     }
 
     /**
@@ -136,8 +226,8 @@ public class LagerDialog {
             case ARTIKELANZAHL:
                 System.out.println("Die Artikelanzahl lautet " + lager.getArtikelAnzahl());
                 break;
-            case LAGERINHALT:
-                System.out.println(lager.toString());
+            case BESTANDAUSGEBEN:
+                lager.ausgebenBestandsListe();
                 break;
             case ENDE:
                 System.out.println("Programmende");

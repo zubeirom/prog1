@@ -7,14 +7,13 @@
  * @author Mouayad Haji Omar, Zubeir Mohamed
  * @version 1.0
  */
+
 public class Artikel {
 
     private int artikelNr;
     private String art;
     private int bestand;
     private double preis;
-
-    final static String MEDIEN = "Medien";
 
     public Artikel(int artikelNr, String art, int bestand, double preis) {
         if (artikelNr > 999 && artikelNr < 10000) {
@@ -154,8 +153,22 @@ public class Artikel {
         }
     }
 
-    String getBeschreibung() {
+    /**
+     * Mit der methode geben wir die beschreibung des artikels zurück
+     * 
+     * @return Beschreibung des artikels
+     */
+    public String getBeschreibung() {
         return art;
+    }
+
+    /**
+     * Mit der methode erhalten wir den Gesamtpreis multipliziert den Bestands
+     * 
+     * @return den gesamtpreis des artikels
+     */
+    public double getGesamtPreis() {
+        return preis * bestand;
     }
 
     /**
