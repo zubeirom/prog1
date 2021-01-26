@@ -98,4 +98,13 @@ public class CD extends Artikel {
         this.anzahlTitel = anzahlTitel;
     }
 
+    /**
+     * Methode gibt Attribute zurück
+     * 
+     * @return Zeichenkette der Attribute
+     */
+    public String toString() {
+        return "Interpret: " + interpret + " Titel: " + titel + " TitelAnzahl: " + anzahlTitel;
+    }
+
 }

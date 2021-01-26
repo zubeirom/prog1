@@ -96,4 +96,13 @@ public class Buch extends Artikel {
     public void setVerlag(String verlag) {
         this.verlag = verlag;
     }
+
+    /**
+     * Methode gibt Attribute zurück
+     * 
+     * @return Zeichenkette der Attribute
+     */
+    public String toString() {
+        return "Titel: " + titel + " Autor: " + autor + " Verlag: " + verlag;
+    }
 }

@@ -97,4 +97,14 @@ public class Video extends Artikel {
     public void setJahr(int jahr) {
         this.jahr = jahr;
     }
+
+    /**
+     * Methode gibt Attribute zurück
+     * 
+     * @return Zeichenkette der Attribute
+     */
+    public String toString() {
+        return "Titel: " + titel + " Spieldauer: " + spieldauer + " Erscheinungsjahr: " + jahr;
+    }
+
 }
