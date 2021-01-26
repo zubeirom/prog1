@@ -167,7 +167,14 @@ public class Lager {
      * @return lager liste
      */
     public String toString() {
-        return Arrays.toString(lager);
+        String list = new String();
+        for (Artikel artikel : lager) {
+            if (artikel != null) {
+                list += artikel.toString() + "\n";
+            }
+        }
+
+        return list;
     }
 
     /**

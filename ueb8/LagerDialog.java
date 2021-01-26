@@ -22,6 +22,7 @@ public class LagerDialog {
     private static final int BESTANDAUSGEBEN = 10;
     private static final int LAGERANLEGEN = 11;
     private static final int ARTIKELANZAHL = 12;
+    private static final int ALLEARTIKEL = 13;
     private static final int ENDE = 0;
 
     /**
@@ -171,7 +172,8 @@ public class LagerDialog {
                 + ABGANGBUCHEN + ": Bestand des Artikels verringern; \n" + LAGERGROESSE + ": Lagergrösse anzeigen; \n"
                 + ENTFERNEARTIKEL + ": Entferne artikel; \n" + PREISEBEARBEITEN + ": Preise nach prozen bearbeiten; \n"
                 + BESTANDAUSGEBEN + ": Bestand des Lagers ausgeben; \n" + LAGERANLEGEN + ": Lager anlegen; \n"
-                + ARTIKELANZAHL + ": Artikel anzahl; \n" + ENDE + ": beenden -> ");
+                + ARTIKELANZAHL + ": Artikel anzahl; \n" + ALLEARTIKEL + ": Alle artikel zeigen; \n" + ENDE
+                + ": beenden -> ");
         return input.nextInt();
     }
 

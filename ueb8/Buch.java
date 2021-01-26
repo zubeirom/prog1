@@ -103,6 +103,7 @@ public class Buch extends Artikel {
      * @return Zeichenkette der Attribute
      */
     public String toString() {
-        return "Titel: " + titel + " Autor: " + autor + " Verlag: " + verlag;
+        return "Artikelnummer: " + getArtikelNr() + " Bezeichnung: " + getArt() + " Bestand: " + getBestand()
+                + " Preis: " + getPreis() + " Titel: " + titel + " Autor: " + autor + " Verlag: " + verlag;
     }
 }

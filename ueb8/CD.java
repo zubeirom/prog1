@@ -104,7 +104,9 @@ public class CD extends Artikel {
      * @return Zeichenkette der Attribute
      */
     public String toString() {
-        return "Interpret: " + interpret + " Titel: " + titel + " TitelAnzahl: " + anzahlTitel;
+        return "Artikelnummer: " + getArtikelNr() + " Bezeichnung: " + getArt() + " Bestand: " + getBestand()
+                + " Preis: " + getPreis() + " Interpret: " + interpret + " Titel: " + titel + " TitelAnzahl: "
+                + anzahlTitel;
     }
 
 }

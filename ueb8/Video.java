@@ -104,7 +104,9 @@ public class Video extends Artikel {
      * @return Zeichenkette der Attribute
      */
     public String toString() {
-        return "Titel: " + titel + " Spieldauer: " + spieldauer + " Erscheinungsjahr: " + jahr;
+        return "Artikelnummer: " + getArtikelNr() + " Bezeichnung: " + getArt() + " Bestand: " + getBestand()
+                + " Preis: " + getPreis() + " Titel: " + titel + " Spieldauer: " + spieldauer + " Erscheinungsjahr: "
+                + jahr;
     }
 
 }
